@@ -1,0 +1,169 @@
+/* Page scrolling and layout */
+html, body {
+  margin: 0; /* remove default browser margin so elements can be flush with viewport */
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: auto;
+  background: linear-gradient(to right, rgb(255, 255, 255), rgb(179, 179, 179));
+}
+
+/* Keep any full-window scene non-interactive so it doesn't block the page */
+a-scene.fullscreen-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  touch-action: auto;
+}
+
+/* Small interactive scene container (bottom-right) */
+#scene-container {
+  width: 100%;
+  height: 360px;
+  z-index: 0;
+  pointer-events: auto; /* container accepts pointer events */
+  background: transparent;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Scene fills the container and is interactive */
+#scene-container a-scene {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto !important;
+  touch-action: auto !important;
+}
+
+/* Ensure default full-page scene stays non-interactive */
+a-scene,
+a-scene * {
+  pointer-events: none !important;
+}
+
+a-scene canvas {
+  pointer-events: none !important;
+  touch-action: auto !important;
+}
+
+/* Re-enable pointer events for the container-scene specifically */
+#scene-container a-scene,
+#scene-container a-scene *,
+#scene-container a-scene canvas {
+  pointer-events: auto !important;
+  touch-action: auto !important;
+}
+
+@media (max-width: 600px) {
+  #scene-container {
+    width: 320px;
+    height: 240px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+.nav-i {
+  list-style-type: none;
+}
+
+.nav-i:hover {
+  background-color: white;
+  color: black;
+}
+
+.nav-i a:hover {
+  background-color: white;
+  color: black;
+}
+
+.nav-i a {
+  text-decoration: none;
+  color: white;
+  padding: 30px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+nav ul {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 0;
+  height: 56px; /* controls nav height */
+  padding: 0;
+}
+
+#mainview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 130px;
+  padding-bottom: 70px;
+}
+
+#logo{
+  height:200px;
+  width:200px;
+  float:left;
+}
+
+#join{
+  margin-top:100px;
+}
+
+*{
+  font-family:poppins;
+}
+
+#red{
+  color:white;
+  background-color:red;
+  padding-right:10px;
+  padding-left:10px;
+}
+@keyframes fly {
+    from{top:50px; right:50px; transform:rotate(-50deg);}
+    to{top:400px; right:300px; transfrom:rotate(0deg);}
+}
+@keyframes appear{
+  from{opacity: 0;}
+  to{opacity: 1;}
+}
+.plane{
+  position:absolute;
+  height:200px;
+  width:400px;
+  top:400px;
+  right:300px;
+  animation-name:fly;
+  animation-delay: 0s;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+}
+.trail{
+  position:absolute;
+  height:400px;
+  width:300px;
+  top:215px;
+  right:190px;
+  animation-name:appear;
+  animation-duration: 10s;
+  animation-iteration-count: 1;
+}
