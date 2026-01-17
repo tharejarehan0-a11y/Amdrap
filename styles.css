@@ -81,7 +81,7 @@ nav ul {
   to{opacity: 1;}
 }
 @keyframes shrinktopage{
-  from{padding-bottom:800px;}
+  from{padding-bottom:400px;}
   to{padding-bottom:0px;}
 }
 

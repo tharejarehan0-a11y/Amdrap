@@ -1,7 +1,6 @@
 let collection = document.getElementsByClassName("hide");
 let plane=document.getElementById("plane");
-let trail = document.getElementById("trail"); 
-let arr = [...collection,plane,trail]
+let arr = [...collection,plane]
 arr.forEach(element => {
     element.style.opacity=0;
     setTimeout(() => {
