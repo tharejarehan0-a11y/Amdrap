@@ -9,66 +9,6 @@ html, body {
   background: linear-gradient(to right, rgb(0, 0, 0), rgb(22, 22, 22));
 }
 
-/* Keep any full-window scene non-interactive so it doesn't block the page */
-a-scene.fullscreen-scene {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  touch-action: auto;
-}
-
-/* Small interactive scene container (bottom-right) */
-#scene-container {
-  width: 100%;
-  height: 360px;
-  z-index: 0;
-  pointer-events: auto; /* container accepts pointer events */
-  background: transparent;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* Scene fills the container and is interactive */
-#scene-container a-scene {
-  width: 100%;
-  height: 100%;
-  pointer-events: auto !important;
-  touch-action: auto !important;
-}
-
-/* Ensure default full-page scene stays non-interactive */
-a-scene,
-a-scene * {
-  pointer-events: none !important;
-}
-
-a-scene canvas {
-  pointer-events: none !important;
-  touch-action: auto !important;
-}
-
-/* Re-enable pointer events for the container-scene specifically */
-#scene-container a-scene,
-#scene-container a-scene *,
-#scene-container a-scene canvas {
-  pointer-events: auto !important;
-  touch-action: auto !important;
-}
-
-@media (max-width: 600px) {
-  #scene-container {
-    width: 320px;
-    height: 240px;
-    right: 12px;
-    bottom: 12px;
-  }
-}
-
 .nav-i {
   list-style-type: none;
 }
@@ -133,8 +73,8 @@ nav ul {
   font-family:poppins;
 }
 @keyframes fly {
-  from{top:50px; right:50px; transform:rotate(-50deg);}
-  to{top:400px; right:300px; transfrom:rotate(0deg);}
+  from{top:0vh; right:0vh; transform:rotate(-50deg);}
+  to{top:50vh; right:20vh; transfrom:rotate(0deg);}
 }
 @keyframes appear{
   from{opacity: 0;}
@@ -158,8 +98,8 @@ nav ul {
   position:absolute;
   height:200px;
   width:400px;
-  top:400px;
-  right:300px;
+  top:50vh;
+  right:20vh;
   animation-name:fly;
   animation-delay: 5s;
   animation-duration: 5s;
@@ -169,8 +109,8 @@ nav ul {
   position:absolute;
   height:400px;
   width:300px;
-  top:215px;
-  right:190px;
+  top:25vh;
+  right:0vw;
   animation-name:appear;
   animation-duration: 10s;
   animation-delay:5s;
@@ -218,7 +158,6 @@ nav ul {
   background-color:black;
   border-radius:100%;
 }
-
 .card:hover{
   background-color:rgb(255, 255, 255);
   color:rgb(0, 0, 0);
@@ -238,4 +177,81 @@ nav ul {
 .name{
   font-family:'Open Sans';
   font-size:25px;
+}
+
+#btn{
+  font-family:'Roboto';
+  font-size:35px;
+  font-weight: bold;
+  padding:20px;
+  background-color:rgb(230, 58, 58);
+  color:white;
+  transition: ease-in-out 1s;
+  border:none;
+  border-radius:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+
+#btn:hover{
+  padding:30px;
+  padding-right:50px;
+  padding-left:50px;
+  transition: ease 1s;
+}
+
+@media screen and (max-width:570px) {
+  #flag{
+    height:180px;
+    width:300px;
+  }
+}
+@media screen and (max-width:450px){
+  #flag{
+    height:150px;
+    width:250px;
+  }
+  .plane{
+    height:100px;
+    width:200px;
+  }
+  .trail{
+    height:300px;
+    width:200px;
+    top:25vh;
+    right:0vw
+  }
+  .member{
+    height:100px;
+    width:100px;
+  }
+  .role{
+    font-family:'Poppins';
+    font-size:20px;
+    font-weight: bolder;
+  }
+  .name{
+    font-family:'Open Sans';
+    font-size:25px;
+  }
+}
+
+@media screen and (max-width:370px){
+  .plane{
+    opacity:0 !important;
+  }
+  .trail{
+    opacity:0 !important; 
+  }
+  #maintext{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width:1220px){
+  #clubmembers{
+    flex-direction: column;
+  }
 }
